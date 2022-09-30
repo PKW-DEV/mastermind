@@ -108,7 +108,12 @@ def construireProposition(f:pygame.Surface,ligne:int)->list:
         
     return proposition
 
-
+def CreationSecret() -> list:  
+    l = []
+    for i in range(1,6):
+        tmp = random.choice(TabCouleur)
+        l.append(tmp)
+    return l
             
 def afficherResultat(f:pygame.Surface,res,ligne):
     x = 520

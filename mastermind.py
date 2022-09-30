@@ -16,6 +16,7 @@ def start():
 
     for i in range(2,17):
         mm.construireProposition(fenetre, i)
+    mm.getChoixCouleur()
         
     enterpressed = False
     while not enterpressed:

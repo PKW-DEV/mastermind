@@ -6,10 +6,15 @@ def win(fenetre, tentative):
     txt = font.render(f"Bravo tu as gagnés en {tentative} tentaive(s) ! Félicitation",1, mm.Rouge)
     fenetre.blit(txt,[20,700])
     pygame.display.update()
-    print("c'est win")
-
     return False
 
+
+def loose(fenetre):
+    font = pygame.font.SysFont("monospace", 25)
+    txt = font.render(f"Perdu !", 1, mm.Rouge)
+    fenetre.blit(txt, [400,700])
+    pygame.display.update()
+    return False
 
 def calcul_res(secret, proposition):
     blanc = 0
@@ -59,11 +64,8 @@ def start():
                 partie = win(fenetre, count)
             inc = inc + 1
         mm.afficherSecret(fenetre,secret)
-
-                
-                
-        #loose()
-        manche = False
+        manche = loose(fenetre)
+        
                 
         
     mm.getChoixCouleur()

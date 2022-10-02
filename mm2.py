@@ -13,12 +13,12 @@ Rouge = (255,0,0)
 Vert = (0,255,0)
 Orange = (225,127,0)
 Rose = (255,0,127)
-Jaune = (255,255,0) 
+Jaune = (255,255,0) #Création de la variable Jaune avec le code couleur RBG correspondant
 Marron = (160,60,0)
 
 
 
-TabCouleur  = [Noir,Blanc,Gris,Bleu,Rouge,Vert,Orange,Rose] 
+TabCouleur  = [Noir,Blanc,Gris,Bleu,Rouge,Vert,Orange,Rose,Jaune] #Ajout de Jaune à la liste
 
 def afficherSecret(laFenetre:pygame.Surface,leSecret:list)->None:
     for i in range(len(leSecret)):

@@ -1,9 +1,9 @@
 import pygame
-import mm
+import mm2
 
 def win(fenetre, tentative):
     font = pygame.font.SysFont("monospace", 25)
-    txt = font.render(f"Bravo tu as gagnés en {tentative} tentaive(s) ! Félicitation",1, mm.Rouge)
+    txt = font.render(f"Bravo tu as gagnés en {tentative} tentaive(s) ! Félicitation",1, mm2.Rouge)
     fenetre.blit(txt,[20,700])
     pygame.display.update()
     print("c'est win")
@@ -34,16 +34,16 @@ def calcul_res(secret, proposition):
 def start():
     pygame.init()
     fenetre = pygame.display.set_mode([800,800])
-    fenetre.fill(mm.Blanc)
+    fenetre.fill(mm2.Blanc)
 
     myfont = pygame.font.SysFont("monospace", 25)
-    lab = myfont.render("MasterMind Groupe Pierre Lilou Chérine",1, mm.Noir)
+    lab = myfont.render("MasterMind Groupe Pierre Lilou Chérine",1, mm2.Noir)
     fenetre.blit(lab,[100,750])
     pygame.display.update()
 
-    mm.afficherPlateau(fenetre)
-    mm.afficherChoixCouleur(fenetre)
-    secret = mm.CreationSecret()
+    mm2.afficherPlateau(fenetre)
+    mm2.afficherChoixCouleur(fenetre)
+    secret = mm2.CreationSecret()
 
     manche = True
     while manche:
@@ -52,13 +52,13 @@ def start():
         partie = True
         while inc != 17 and partie:
             count = count + 1
-            reponse = mm.construireProposition(fenetre, inc)
+            reponse = mm2.construireProposition(fenetre, inc)
             total =calcul_res(secret, reponse)
-            mm.afficherResultat(fenetre,total,inc)
+            mm2.afficherResultat(fenetre,total,inc)
             if reponse == secret:
                 partie = win(fenetre, count)
             inc = inc + 1
-        mm.afficherSecret(fenetre,secret)
+        mm2.afficherSecret(fenetre,secret)
 
                 
                 
@@ -66,7 +66,7 @@ def start():
         manche = False
                 
         
-    mm.getChoixCouleur()
+    mm2.getChoixCouleur()
         
     enterpressed = False
     while not enterpressed:

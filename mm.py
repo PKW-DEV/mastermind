@@ -128,3 +128,4 @@ def afficherResultat(f:pygame.Surface,res,ligne):
         j = j + 1
     pygame.display.update()
         
+  

@@ -30,6 +30,13 @@ def calcul_res(secret, proposition):
     return res
 
 
+def loose(fenetre):
+    font = pygame.font.SysFont("monospace", 25)
+    txt = font.render(f"Perdu !", 1, mm2.Rouge)
+    fenetre.blit(txt, [400,700])
+    pygame.display.update()
+    return False
+
 
 def start():
     pygame.init()
@@ -44,6 +51,7 @@ def start():
     mm2.afficherPlateau(fenetre)
     mm2.afficherChoixCouleur(fenetre)
     secret = mm2.CreationSecret()
+    mm2.afficherSecret(fenetre,secret)
 
     manche = True
     while manche:
@@ -59,12 +67,9 @@ def start():
                 partie = win(fenetre, count)
             inc = inc + 1
         mm2.afficherSecret(fenetre,secret)
+        manche = loose()
 
-                
-                
-        #loose()
-        manche = False
-                
+
         
     mm2.getChoixCouleur()
         

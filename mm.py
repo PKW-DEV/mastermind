@@ -106,12 +106,18 @@ def construireProposition(f:pygame.Surface,ligne:int)->list:
         
     return proposition
 
-def CreationSecret() -> list:                   #Création d'une fonction pour créer la combinaison secrète
-    l = []                                      #Création d'une liste vite où seront mise la liste des couleur de la combinaison secrète 
-    for i in range(1,6):                        #La liste doit comporter 5 élements, alors utilisons la fonction range() pour effectuer 5 répétition de la boucle 
-        tmp = random.choice(TabCouleur)         #Choisissons une couleur aléatoirement parmis la liste déjà définis et ajoutons à une variable local
-        l.append(tmp)                           #Ajout de la couleur stocké dans la variable local vers la la liste (puis répétons l'opération 5 fois)
-    return l                                    #retournons la liste comportant la combinaisons secrète de 5 couleurs
+# Création d'une fonction pour créer la combinaison secrète
+def CreationSecret() -> list:                   
+    # Création d'une liste vite où sera mis la liste des couleurs de la combinaison secrète
+    l = []                                       
+    # La liste doit comporter 5 élements, alors utilisons la fonction range() pour effectuer 5 répétitions de la boucle 
+    for i in range(1,6):                        
+    # Choisissons une couleur aléatoirement parmi la liste déjà définie et ajoutons à une variable locale    
+        tmp = random.choice(TabCouleur)         
+    # Ajout de la couleur stockée dans la variable locale vers la liste (puis répétons l'opération 5 fois)    
+        l.append(tmp)                       
+    # Retournons la liste comportant la combinaison secrète de 5 couleurs
+    return l  
             
 def afficherResultat(f:pygame.Surface,res,ligne):
     x = 520

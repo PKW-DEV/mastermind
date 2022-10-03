@@ -1,10 +1,10 @@
-# importation du module pygame
+# Importation du module pygame
 import pygame
 import random
 import math
 
 
-#definition de variables globales
+# Définition des variables globales
 Noir = (0,0,0)
 Blanc = (255,255,255)
 Gris = (128,128,128)
@@ -13,12 +13,10 @@ Rouge = (255,0,0)
 Vert = (0,255,0)
 Orange = (225,127,0)
 Rose = (255,0,127)
-Jaune = (255,255,0) #Création de la variable Jaune avec le code couleur RBG correspondant
+Jaune = (255,255,0) # Création de la variable Jaune avec le code couleur RBG correspondant
 Marron = (160,60,0)
 
-
-
-TabCouleur  = [Noir,Blanc,Gris,Bleu,Rouge,Vert,Orange,Rose,Jaune] #Ajout de Jaune à la liste
+TabCouleur  = [Noir,Blanc,Gris,Bleu,Rouge,Vert,Orange,Rose,Jaune] # Ajout de Jaune à la liste
 
 def afficherSecret(laFenetre:pygame.Surface,leSecret:list)->None:
     for i in range(len(leSecret)):
@@ -49,10 +47,10 @@ def afficherPlateau(f:pygame.Surface)->None:
             pygame.draw.rect(f,Noir,[300+40*i,60+40*l,40,40],1)
         pygame.draw.rect(f,Noir,[520,60+40*l,40,40],1)
     
-    text1 = "nb noir = nb mal placé"
-    text2 = "nb blanc = nb bien placé"
-    text3 = "choix pion"
-    text4 = "retirer dernier pion"
+    text1 = "Nb noir = Nb mal placé"
+    text2 = "Nb blanc = Nb bien placé"
+    text3 = "Choix pion"
+    text4 = "Retirer dernier pion"
     myfont = pygame.font.SysFont("monospace", 15)
     label1 = myfont.render(text1, 1, Noir)
     label2 = myfont.render(text2, 1, Noir)
@@ -79,7 +77,7 @@ def getChoixCouleur()->None:
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                print("c'est fini!!!")
+                print("C'est terminé !")
                 pygame.quit()
             if event.type == pygame.MOUSEBUTTONUP:
                 positionSouris = pygame.mouse.get_pos()
@@ -108,13 +106,19 @@ def construireProposition(f:pygame.Surface,ligne:int)->list:
         
     return proposition
 
-def CreationSecret() -> list:                   #Création d'une fonction pour créer la combinaison secrète
-    l = []                                      #Création d'une liste vite où seront mise la liste des couleur de la combinaison secrète 
-    for i in range(1,6):                        #La liste doit comporter 5 élements, alors utilisons la fonction range() pour effectuer 5 répétition de la boucle 
-        tmp = random.choice(TabCouleur)         #Choisissons une couleur aléatoirement parmis la liste déjà définis et ajoutons à une variable local
-        l.append(tmp)                           #Ajout de la couleur stocké dans la variable local vers la la liste (puis répétons l'opération 5 fois)
-    return l                                    #retournons la liste comportant la combinaisons secrète de 5 couleurs
-            
+# Création d'une fonction pour créer la combinaison secrète
+def CreationSecret() -> list:                   
+    # Création d'une liste vite où sera mis la liste des couleurs de la combinaison secrète
+    l = []                                       
+    # La liste doit comporter 5 élements, alors utilisons la fonction range() pour effectuer 5 répétitions de la boucle 
+    for i in range(1,6):                        
+    # Choisissons une couleur aléatoirement parmi la liste déjà définie et ajoutons à une variable locale    
+        tmp = random.choice(TabCouleur)         
+    # Ajout de la couleur stockée dans la variable locale vers la liste (puis répétons l'opération 5 fois)    
+        l.append(tmp)                       
+    # Retournons la liste comportant la combinaison secrète de 5 couleurs
+    return l            
+
 def afficherResultat(f:pygame.Surface,res,ligne):
     x = 520
     y = 20+40*(ligne-1)

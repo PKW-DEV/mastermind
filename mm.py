@@ -1,10 +1,10 @@
-# importation du module pygame
+# Importation du module pygame
 import pygame
 import random
 import math
 
 
-#definition de variables globales
+# Définition des variables globales
 Noir = (0,0,0)
 Blanc = (255,255,255)
 Gris = (128,128,128)
@@ -15,8 +15,6 @@ Orange = (225,127,0)
 Rose = (255,0,127)
 Jaune = (255,255,0) 
 Marron = (160,60,0)
-
-
 
 TabCouleur  = [Noir,Blanc,Gris,Bleu,Rouge,Vert,Orange,Rose] 
 
@@ -49,10 +47,10 @@ def afficherPlateau(f:pygame.Surface)->None:
             pygame.draw.rect(f,Noir,[300+40*i,60+40*l,40,40],1)
         pygame.draw.rect(f,Noir,[520,60+40*l,40,40],1)
     
-    text1 = "nb noir = nb mal placé"
-    text2 = "nb blanc = nb bien placé"
-    text3 = "choix pion"
-    text4 = "retirer dernier pion"
+    text1 = "Nb noir = Nb mal placé"
+    text2 = "Nb blanc = Nb bien placé"
+    text3 = "Choix pion"
+    text4 = "Retirer dernier pion"
     myfont = pygame.font.SysFont("monospace", 15)
     label1 = myfont.render(text1, 1, Noir)
     label2 = myfont.render(text2, 1, Noir)
@@ -79,7 +77,7 @@ def getChoixCouleur()->None:
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                print("c'est fini!!!")
+                print("C'est terminé !")
                 pygame.quit()
             if event.type == pygame.MOUSEBUTTONUP:
                 positionSouris = pygame.mouse.get_pos()

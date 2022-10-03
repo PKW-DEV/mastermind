@@ -3,7 +3,7 @@ import mm
 
 def win(fenetre, tentative):
     font = pygame.font.SysFont("monospace", 25)
-    txt = font.render(f"Bravo tu as gagnés en {tentative} tentaive(s) ! Félicitation",1, mm.Rouge)
+    txt = font.render(f"Bravo tu as gagné en {tentative} tentative(s) ! Félicitations",1, mm.Rouge)
     fenetre.blit(txt,[20,700])
     pygame.display.update()
     return False
@@ -42,7 +42,7 @@ def start():
     fenetre.fill(mm.Blanc)
 
     myfont = pygame.font.SysFont("monospace", 25)
-    lab = myfont.render("MasterMind Groupe Pierre Lilou Chérine",1, mm.Noir)
+    lab = myfont.render("MasterMind - Pierre Lilou Chérine",1, mm.Noir)
     fenetre.blit(lab,[100,750])
     pygame.display.update()
 
@@ -76,11 +76,10 @@ def start():
             if event.type == pygame.KEYDOWN:
                 keys = pygame.key.get_pressed()
                 enterpressed = keys[pygame.K_RETURN]
-                print("appuie sur une touche")
+                print("Appuie sur une touche")
             if event.type == pygame.QUIT:
                 pygame.quit()
-            
-        
+              
 
 if __name__ == "__main__":
     start()

@@ -16,24 +16,19 @@ def loose(fenetre):
     pygame.display.update()
     return False
 
-
 def calcul_res(secret, proposition):
     blanc = 0
     noir = 0
     i = 0
     j = 0
-    rm = []
-    while i != 5:
-        if secret[i] == proposition[i]:
-            rm.append(i)
-            blanc = blanc+1
-        i = i+1
-    while j != 5:
-        if secret[j] in proposition and j not in rm:
+    for i in range(5):
+        if proposition[i] == secret[i]:
+            blanc = blanc + 1
+        elif proposition[i] in secret:
             noir = noir + 1
-        j = j+1
     res = [blanc,noir]
     return res
+
 
 
 def start():
@@ -49,19 +44,20 @@ def start():
     mm.afficherPlateau(fenetre)
     mm.afficherChoixCouleur(fenetre)
     secret = mm.CreationSecret()
-    mm.afficherSecret(fenetre, secret)
+    #mm.afficherSecret(fenetre, secret)
     manche = True
     while manche:
         count = 0
         inc = 2
         partie = True
-        while inc != 6 and partie:
+        while inc != 17 and partie:
             count = count + 1
             reponse = mm.construireProposition(fenetre, inc)
             total =calcul_res(secret, reponse)
             mm.afficherResultat(fenetre,total,inc)
             if reponse == secret:
                 partie = win(fenetre, count)
+                manche = False
             inc = inc + 1
         mm.afficherSecret(fenetre,secret)
         if partie is True:
@@ -80,6 +76,8 @@ def start():
                 print("Appuie sur une touche")
             if event.type == pygame.QUIT:
                 pygame.quit()
+              
  
 if __name__ == "__main__":
     start()
+

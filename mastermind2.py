@@ -6,28 +6,7 @@ def win(fenetre, tentative):
     txt = font.render(f"Bravo tu as gagné en {tentative} tentative(s) ! Félicitations",1, mm2.Rouge)
     fenetre.blit(txt,[20,700])
     pygame.display.update()
-    print("C'est gagné !")
-
     return False
-
-
-def calcul_res(secret, proposition):
-    blanc = 0
-    noir = 0
-    i = 0
-    j = 0
-    rm = []
-    while i != 5:
-        if secret[i] == proposition[i]:
-            rm.append(i)
-            blanc = blanc+1
-        i = i+1
-    while j != 5:
-        if secret[j] in proposition and j not in rm:
-            noir = noir + 1
-        j = j+1
-    res = [blanc,noir]
-    return res
 
 
 def loose(fenetre):
@@ -36,6 +15,20 @@ def loose(fenetre):
     fenetre.blit(txt, [400,700])
     pygame.display.update()
     return False
+
+def calcul_res(secret, proposition):
+    blanc = 0
+    noir = 0
+    i = 0
+    j = 0
+    for i in range(5):
+        if proposition[i] == secret[i]:
+            blanc = blanc + 1
+        elif proposition[i] in secret:
+            noir = noir + 1
+    res = [blanc,noir]
+    return res
+
 
 
 def start():
@@ -51,8 +44,7 @@ def start():
     mm2.afficherPlateau(fenetre)
     mm2.afficherChoixCouleur(fenetre)
     secret = mm2.CreationSecret()
-    mm2.afficherSecret(fenetre,secret)
-
+    #mm2.afficherSecret(fenetre, secret)
     manche = True
     while manche:
         count = 0
@@ -65,11 +57,13 @@ def start():
             mm2.afficherResultat(fenetre,total,inc)
             if reponse == secret:
                 partie = win(fenetre, count)
+                manche = False
             inc = inc + 1
         mm2.afficherSecret(fenetre,secret)
-        manche = loose()
-
-
+        if partie is True:
+            manche = loose(fenetre)
+        
+                
         
     mm2.getChoixCouleur()
         
@@ -82,8 +76,9 @@ def start():
                 print("Appuie sur une touche")
             if event.type == pygame.QUIT:
                 pygame.quit()
-            
-        
+              
  
 if __name__ == "__main__":
     start()
+
+

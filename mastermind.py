@@ -19,17 +19,16 @@ def loose(fenetre):
 def calcul_res(secret, proposition):
     blanc = 0
     noir = 0
-    i = 0
-    j = 0
+    p2 = proposition.copy()
     for i in range(5):
-        if proposition[i] == secret[i]:
-            blanc = blanc + 1
-        elif proposition[i] in secret:
+        if secret[i] == proposition[i]:
+            blanc = blanc+1
+            p2.remove(proposition[i])
+        elif secret[i] in p2:
             noir = noir + 1
+            p2.remove(secret[i])
     res = [blanc,noir]
     return res
-
-
 
 def start():
     pygame.init()
@@ -44,7 +43,7 @@ def start():
     mm.afficherPlateau(fenetre)
     mm.afficherChoixCouleur(fenetre)
     secret = mm.CreationSecret()
-    #mm.afficherSecret(fenetre, secret)
+    mm.afficherSecret(fenetre, secret)
     manche = True
     while manche:
         count = 0

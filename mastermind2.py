@@ -16,18 +16,21 @@ def loose(fenetre):
     pygame.display.update()
     return False
 
+
 def calcul_res(secret, proposition):
     blanc = 0
     noir = 0
-    i = 0
-    j = 0
+    p2 = proposition.copy()
     for i in range(5):
-        if proposition[i] == secret[i]:
-            blanc = blanc + 1
-        elif proposition[i] in secret:
+        if secret[i] == proposition[i]:
+            blanc = blanc+1
+            p2.remove(proposition[i])
+        elif secret[i] in p2:
             noir = noir + 1
+            p2.remove(secret[i])
     res = [blanc,noir]
     return res
+
 
 
 
@@ -70,10 +73,6 @@ def start():
     enterpressed = False
     while not enterpressed:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                keys = pygame.key.get_pressed()
-                enterpressed = keys[pygame.K_RETURN]
-                print("Appuie sur une touche")
             if event.type == pygame.QUIT:
                 pygame.quit()
               

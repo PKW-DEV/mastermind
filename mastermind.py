@@ -43,7 +43,7 @@ def start():
     mm.afficherPlateau(fenetre)
     mm.afficherChoixCouleur(fenetre)
     secret = mm.CreationSecret()
-    mm.afficherSecret(fenetre, secret)
+    #mm.afficherSecret(fenetre, secret)
     manche = True
     while manche:
         count = 0

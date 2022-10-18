@@ -47,7 +47,6 @@ def start():
     mm2.afficherPlateau(fenetre)
     mm2.afficherChoixCouleur(fenetre)
     secret = mm2.CreationSecret()
-    #mm2.afficherSecret(fenetre, secret)
     manche = True
     while manche:
         count = 0

@@ -110,9 +110,6 @@ def start():
             # on assigne la variable manche à la fonction lose qui retourne False et qui mets fin au jeu
             manche = lose(fenetre)
         
-                
-        
-    mm2.getChoixCouleur()
         
     enterpressed = False
     while not enterpressed:

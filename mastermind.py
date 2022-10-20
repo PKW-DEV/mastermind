@@ -111,8 +111,7 @@ def start():
             manche = lose(fenetre)
         
                 
-        
-    mm.getChoixCouleur()
+
         
     enterpressed = False
     while not enterpressed:
